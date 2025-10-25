@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { restaurants } from "../../data/restaurants";
+import { DishesList } from "@/app/components/dishes/DishesList";
 
 type Params = { id: string };
 
@@ -12,19 +13,28 @@ export default async function RestaurantDetails({ params }: { params: Promise<Pa
     if (!restaurant) return notFound();
 
     return (
-        <section className="space-y-4 py-8">
-            <h1 className="text-3xl font-bold">{restaurant.name}</h1>
-            <p className="text-gray-600">
-                {restaurant.city} • {restaurant.address}
-            </p>
+        <>
+            <section className="relative -mt-28">
+                <div className="full-bleed relative h-[40vh] md:h-[38vh] lg:h-[38vh]">
+                    <Image
+                        src={restaurant.imageUrl}
+                        alt={restaurant.name}
+                        fill
+                        className="object-cover"
+                        sizes="100vw"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/60" />
+                </div>
 
-            <Image
-                src={restaurant.imageUrl}
-                alt={restaurant.name}
-                width={1000}
-                height={500}
-                className="rounded-xl w-full object-cover aspect-[16/9]"
-            />
-        </section>
+                <div className="absolute bottom-6 text-white z-20">
+                    <h1 className="text-3xl font-bold">{restaurant.name}</h1>
+                    <p className="opacity-80">{restaurant.city} • {restaurant.address}</p>
+                </div>
+            </section>
+
+            <DishesList restaurant={restaurant} />
+        </>
+
     );
 }

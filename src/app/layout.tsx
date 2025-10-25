@@ -26,14 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden grid p-4
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden grid
     [grid-template-columns:minmax(20px,1fr)_auto_minmax(20px,1fr)]
     md:[grid-template-columns:minmax(20px,1fr)_720px_minmax(20px,1fr)]
     lg:[grid-template-columns:minmax(20px,1fr)_960px_minmax(20px,1fr)]
     xl:[grid-template-columns:minmax(20px,1fr)_1140px_minmax(20px,1fr)]
-    2xl:[grid-template-columns:minmax(20px,1fr)_1280px_minmax(20px,1fr)]`}
+    2xl:[grid-template-columns:minmax(20px,1fr)_1550px_minmax(20px,1fr)]`}
       >
-        <header className="col-[2]"><Header /></header>
+        <header className="col-[2] relative z-20"><Header /></header>
         <main className="col-[2]">{children}</main>
 
       </body>
