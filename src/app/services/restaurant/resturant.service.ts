@@ -14,13 +14,13 @@ export const restaurantService = {
     // getDefaultFilter
 }
 
-async function query() {
-    let restaurants = await storageService.query(STORAGE_KEY)
-    if (!restaurants || !restaurants.length) {
-        restaurants = bringRestaurants()
-    }
+async function query(): Promise<Restaurant[]> {
+    let restaurants = await storageService.query<Restaurant>(STORAGE_KEY);
 
-    return restaurants
+    if (!restaurants || restaurants.length === 0) {
+        restaurants = bringRestaurants();
+    }
+    return restaurants;
 }
 
 function getById(restaurantId: string) {
@@ -28,9 +28,7 @@ function getById(restaurantId: string) {
 }
 
 function bringRestaurants(): Restaurant[] {
-    // copy static data (avoid mutating original)
-    const copy = structuredClone(defaultRestaurants)
-    // save to storage for persistence
-    utilService.saveToStorage(STORAGE_KEY, copy)
-    return copy
+    const copy: Restaurant[] = structuredClone(defaultRestaurants);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(copy));
+    return copy;
 }

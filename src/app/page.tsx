@@ -6,7 +6,7 @@ export default function Home() {
 // console.log(restaurants);
   return (
     <>
-      <RestaurantsIndex restaurants={restaurants}/>
+      <RestaurantsIndex/>
     </>
   );
 }

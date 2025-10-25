@@ -8,6 +8,7 @@ type Params = { id: string };
 
 export default async function RestaurantDetails({ params }: { params: Promise<Params>; }) {
     const { id } = await params;
+    console.log(restaurants, 'restaurants');
 
     const restaurant = restaurants.find((r) => r._id === id);
     if (!restaurant) return notFound();

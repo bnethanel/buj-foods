@@ -1,11 +1,9 @@
-import React from "react";
 import type { Restaurant } from "../../data/restaurants";
 import Link from "next/link";
 import Image from "next/image";
 
 
 export function RestaurantPreview({ restaurant }: { restaurant: Restaurant }) {
-    console.log('restaurant:', restaurant);
     return (
     <Link
       href={`/restaurants/${restaurant._id}`}
