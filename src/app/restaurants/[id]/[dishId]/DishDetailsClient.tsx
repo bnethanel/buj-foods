@@ -2,7 +2,6 @@
 import { Dish } from "@/app/data/restaurants";
 import { cartService } from "@/app/services/cart/cart.service";
 import Image from "next/image";
-import React from "react";
 
 export default function DishDetailsClient({ dish}: { dish: Dish }) {
 
