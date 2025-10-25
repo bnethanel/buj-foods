@@ -8,7 +8,7 @@ export function RestaurantPreview({ restaurant }: { restaurant: Restaurant }) {
     console.log('restaurant:', restaurant);
     return (
     <Link
-      href={`/restaurants/${restaurant.id}`}
+      href={`/restaurants/${restaurant._id}`}
       className="group block rounded-xl border border-black/10 bg-white/5 p-3 hover:bg-white/10 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 transition"
     >
       <div className="overflow-hidden rounded-lg">

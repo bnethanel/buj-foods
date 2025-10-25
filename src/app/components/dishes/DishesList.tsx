@@ -11,7 +11,7 @@ export function DishesList({ restaurant }: { restaurant: Restaurant }) {
     return <section className="dishes-list">
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-40">
             {dishes.map((dish) => (
-                <li key={dish.id} >
+                <li key={dish._id} >
                     <DishPreview
                         dish={dish} restaurant={restaurant} />
                 </li>

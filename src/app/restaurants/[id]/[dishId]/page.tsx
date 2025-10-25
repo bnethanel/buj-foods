@@ -9,10 +9,10 @@ export default async function DishDetails({ params }: { params: Promise<Params>;
 
   const { id, dishId } = await params
 
-  const restaurant = restaurants.find((r) => r.id === id);
+  const restaurant = restaurants.find((r) => r._id === id);
   if (!restaurant) return notFound();
 
-  const dish = restaurant.dishes.find(d => d.id === dishId)
+  const dish = restaurant.dishes.find(d => d._id === dishId)
   if (!dish) return notFound()
 
   return (
