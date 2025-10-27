@@ -5,5 +5,5 @@ export const cartService = {
 }
 
 function addToCart(dish : Dish) {
-    console.log(dish)
+    console.log(dish,'dish')
 }
