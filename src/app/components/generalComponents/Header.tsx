@@ -3,10 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { userService } from "@/app/services/user/user.service.local";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const [user, setUser] = useState<{ _id: string; fullname: string } | null>(null)
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -14,6 +15,11 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const loggedUser = userService.getLoggedinUser()
+    setUser(loggedUser)
+  }, [])
 
   return (
     <section
@@ -45,12 +51,18 @@ export function Header() {
           >
             About
           </Link>
-          <Link
+
+          {user ? (
+            <span className="text-black/80 hover:text-white transition">
+              Hello {user.fullname}!
+            </span>
+          ) : <Link
             href="/login"
             className="rounded-md bg-sky-500 hover:bg-sky-400 text-white px-4 py-2 text-sm font-medium transition"
           >
             Login
-          </Link>
+          </Link>}
+
         </div>
       </nav>
     </section>
