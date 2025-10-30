@@ -1,4 +1,4 @@
-import { storageService } from '../async-storage.service.js'
+import { storageService } from "../async-storage.service"
 import type { User } from '../../data/types.js'
 
 const USER_STORAGE_KEY = 'userDB'
@@ -19,7 +19,6 @@ export const userService = {
 
 async function getUsers(): Promise<PublicUser[]> {
   const users = (await storageService.query(USER_STORAGE_KEY)) as User[]
-  // Return users without their passwords (and without username, if you prefer)
   return users.map(({ _id, fullname }) => ({ _id, fullname }))
 }
 
