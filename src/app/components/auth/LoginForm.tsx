@@ -14,7 +14,7 @@ export function LoginForm() {
     try {
       await userService.login({ username, password })
       alert('Login successful!')
-      router.push('/') // redirect home
+      router.push('/')
     } catch {
       alert('Invalid username or password')
     }

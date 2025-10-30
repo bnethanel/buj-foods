@@ -27,7 +27,7 @@ function get<T extends Entity>(entityType: string, entityId: string): Promise<T>
 }
 
 function post<T extends Entity>(entityType: string, newEntity: Omit<T, "_id">): Promise<T> {
-  const entity = { ...newEntity, _id: _makeId() } as T
+  const entity = { ...newEntity, _id: newEntity._id ?? _makeId() } as T
   return query<T>(entityType).then(entities => {
     entities.push(entity)
     _save(entityType, entities)
